@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPage", "RazorPage\RazorPage.csproj", "{E8823819-290C-48B8-BA6E-C9E89379FF56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPage", "RazorPage\RazorPage.csproj", "{E8823819-290C-48B8-BA6E-C9E89379FF56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backplane1", "Backplane1\Backplane1.csproj", "{F5C77E42-49C0-465D-824A-EF3A06603990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backplane2", "Backplane2\Backplane2.csproj", "{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E8823819-290C-48B8-BA6E-C9E89379FF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8823819-290C-48B8-BA6E-C9E89379FF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8823819-290C-48B8-BA6E-C9E89379FF56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C77E42-49C0-465D-824A-EF3A06603990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C77E42-49C0-465D-824A-EF3A06603990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C77E42-49C0-465D-824A-EF3A06603990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C77E42-49C0-465D-824A-EF3A06603990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
