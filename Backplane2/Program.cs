@@ -26,7 +26,7 @@ var app = builder.Build();
 
 app.UseCors("CorsPolicy");
 
-app.MapHub<IndexHub>("/indexHub");
+app.MapHub<IndexHub>("/hubs/IndexHub");
 
 app.MapGet("/", () => "Backplane2");
 
