@@ -1,8 +1,8 @@
 ﻿@page
-@model Customer2Model
+@model RazorPage.Pages.Customer.Customer2Model
 <script>
     var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/CustomerHub")
+        .withUrl("/hubs/CustomerHub")
         .build();
 
     connection.start()

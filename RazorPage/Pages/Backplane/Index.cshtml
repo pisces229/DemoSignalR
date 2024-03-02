@@ -1,8 +1,8 @@
 ﻿@page 
-@model IndexModel
+@model RazorPage.Pages.Backplane.IndexModel
 <script>
     let connection1 = new signalR.HubConnectionBuilder()
-        .withUrl("https://localhost:7185/indexHub")
+        .withUrl("https://localhost:7185/hubs/indexHub")
         .build();
     connection1.start().then(function () {
         connection1.on("Receive", function (message) {
@@ -18,7 +18,7 @@
         });
     }
     let connection2 = new signalR.HubConnectionBuilder()
-        .withUrl("https://localhost:7250/indexHub")
+        .withUrl("https://localhost:7250/hubs/indexHub")
         .build();
     connection2.start().then(function () {
         connection2.on("Receive", function (message) {

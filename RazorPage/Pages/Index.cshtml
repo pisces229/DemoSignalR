@@ -1,8 +1,8 @@
 ﻿@page 
-@model IndexModel
+@model RazorPage.Pages.IndexModel
 <script>
     var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/indexHub")
+        .withUrl("/hubs/IndexHub")
         .build();
 
     connection.start().then(function () {

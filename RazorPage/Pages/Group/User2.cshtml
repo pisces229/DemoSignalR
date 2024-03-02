@@ -1,8 +1,8 @@
 ﻿@page
-@model User2Model
+@model RazorPage.Pages.Group.User2Model
 <script>
     var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/GroupHub")
+        .withUrl("/hubs/GroupHub")
         .build();
 
     connection.start()
