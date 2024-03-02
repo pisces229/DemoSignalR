@@ -5,9 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPage", "RazorPage\RazorPage.csproj", "{E8823819-290C-48B8-BA6E-C9E89379FF56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backplane1", "Backplane1\Backplane1.csproj", "{F5C77E42-49C0-465D-824A-EF3A06603990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backplane1", "Backplane1\Backplane1.csproj", "{F5C77E42-49C0-465D-824A-EF3A06603990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backplane2", "Backplane2\Backplane2.csproj", "{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backplane2", "Backplane2\Backplane2.csproj", "{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendClient", "BackendClient\BackendClient.csproj", "{53C20C85-BA5A-457B-A0DD-E857A3DEF5C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAE3FEF9-43D3-480B-82FE-DE03FA02EE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C20C85-BA5A-457B-A0DD-E857A3DEF5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C20C85-BA5A-457B-A0DD-E857A3DEF5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C20C85-BA5A-457B-A0DD-E857A3DEF5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C20C85-BA5A-457B-A0DD-E857A3DEF5C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
