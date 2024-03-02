@@ -6,6 +6,8 @@
 
 [signalr](https://www.npmjs.com/package/@microsoft/signalr)
 
+[libman](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/libman-vs?view=aspnetcore-8.0)
+
 ## backplane
 
 [ASP.NET Core SignalR hosting and scaling](https://learn.microsoft.com/zh-tw/aspnet/core/signalr/scale?view=aspnetcore-8.0)
