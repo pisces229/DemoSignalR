@@ -108,9 +108,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapHub<IndexHub>("/hubs/IndexHub");
-app.MapHub<GroupHub>("/hubs/GroupHub");
-app.MapHub<CustomerHub>("/hubs/CustomerHub");
 app.MapHub<AuthorizeHub>("/hubs/AuthorizeHub");
+app.MapHub<BroadcastHub>("/hubs/BroadcastHub");
+app.MapHub<CustomerHub>("/hubs/CustomerHub");
+app.MapHub<GroupHub>("/hubs/GroupHub");
+app.MapHub<IndexHub>("/hubs/IndexHub");
 
 app.Run();
