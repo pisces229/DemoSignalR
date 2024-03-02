@@ -8,6 +8,8 @@
 
 ## backplane
 
+[ASP.NET Core SignalR hosting and scaling](https://learn.microsoft.com/zh-tw/aspnet/core/signalr/scale?view=aspnetcore-8.0)
+
 [backplane](https://ithelp.ithome.com.tw/articles/10188426)
 
-[Redis](https://learn.microsoft.com/zh-tw/aspnet/core/signalr/redis-backplane?view=aspnetcore-8.0)
+[SqlServer](https://github.com/IntelliTect/IntelliTect.AspNetCore.SignalR.SqlServer)
