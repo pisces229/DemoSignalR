@@ -14,6 +14,8 @@ namespace RazorPage.Hubs
             await Clients.All.SendAsync("Receive", message);
         }
         [Authorize]
+        [Authorize(Roles = "Role")]
+        //[Authorize(Roles = "Admin")]
         public async Task Send2(string message)
         {
             await Clients.All.SendAsync("Receive", $"{Context.User?.Identity?.Name}: {message}");

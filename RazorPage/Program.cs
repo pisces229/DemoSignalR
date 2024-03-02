@@ -28,9 +28,9 @@ builder.Services.AddAuthentication(options =>
     {
         ValidIssuer = "Issuer",
         ValidAudience = "Audience",
-        // 透過這項宣告，就可以從 "NAME" 取值
+        // get the value from "Context.User.Identity.Name".
         NameClaimType = ClaimTypes.NameIdentifier,
-        // 透過這項宣告，就可以從 "Role" 取值，並可讓 [Authorize] 判斷角色
+        // make [Authorize] determine the role.
         RoleClaimType = ClaimTypes.Role,
         ValidateIssuer = true,
         ValidateIssuerSigningKey = true,
