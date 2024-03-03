@@ -9,6 +9,7 @@ using System.Security.Principal;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHostedService<BackgroundHostedService>();
 builder.Services.AddSingleton<MessageRepository>();
 builder.Services.AddSingleton<CustomerRepository>();
 builder.Services.AddRazorPages();
@@ -109,6 +110,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapHub<AuthorizeHub>("/hubs/AuthorizeHub");
+app.MapHub<BackgroundHub>("/hubs/BackgroundHub");
 app.MapHub<BroadcastHub>("/hubs/BroadcastHub");
 app.MapHub<CustomerHub>("/hubs/CustomerHub");
 app.MapHub<GroupHub>("/hubs/GroupHub");
