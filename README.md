@@ -8,6 +8,8 @@
 
 [libman](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/libman-vs?view=aspnetcore-8.0)
 
+[SignalR vs. WebSocket: Key differences and which to use](https://ably.com/topic/signalr-vs-websocket)
+
 ## backplane
 
 [ASP.NET Core SignalR hosting and scaling](https://learn.microsoft.com/zh-tw/aspnet/core/signalr/scale?view=aspnetcore-8.0)
