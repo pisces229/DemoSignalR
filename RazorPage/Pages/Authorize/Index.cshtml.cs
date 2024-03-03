@@ -8,11 +8,10 @@ namespace RazorPage.Authorize
 {
     public class IndexModel(ILogger<IndexModel> logger) : PageModel
     {
-        private readonly ILogger<IndexModel> _logger = logger;
         public string AccessToken { get; set; } = null!;
         public void OnGet()
         {
-            _logger.LogInformation("IndexModel.OnGet");
+            logger.LogInformation("IndexModel.OnGet");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Issuer = "Issuer",

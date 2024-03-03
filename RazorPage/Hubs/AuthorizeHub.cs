@@ -8,7 +8,6 @@ namespace RazorPage.Hubs
     // [Authorize]
     public class AuthorizeHub(ILogger<AuthorizeHub> logger) : Hub
     {
-        private readonly ILogger<AuthorizeHub> _logger = logger;
         public async Task Send1(string message)
         {
             await Clients.All.SendAsync("Receive", message);
@@ -22,12 +21,12 @@ namespace RazorPage.Hubs
         }
         public override async Task OnConnectedAsync()
         {
-            _logger.LogInformation("AuthorizeHub.OnConnectedAsync:{v}", Context.GetHashCode());
+            logger.LogInformation("AuthorizeHub.OnConnectedAsync:{v}", Context.GetHashCode());
             await base.OnConnectedAsync();
         }
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            _logger.LogInformation("AuthorizeHub.OnDisconnectedAsync:{v}", Context.GetHashCode());
+            logger.LogInformation("AuthorizeHub.OnDisconnectedAsync:{v}", Context.GetHashCode());
             await base.OnDisconnectedAsync(exception);
         }
     }
