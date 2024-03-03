@@ -13,6 +13,7 @@ namespace RazorPage
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            logger.LogInformation("BackgroundHostedService is executing.");
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(1000);
@@ -25,7 +26,5 @@ namespace RazorPage
             logger.LogInformation("BackgroundHostedService is stopping.");
             await base.StopAsync(stoppingToken);
         }
-
-
     }
 }
