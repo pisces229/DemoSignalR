@@ -1,0 +1,73 @@
+﻿@page 
+@model RazorPage.Pages.Customer.CustomerServiceModel
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/CustomerHub")
+        .build();
+
+    connection.start()
+        .then(function () {
+            document.getElementById("user").innerText += `(${connection.connectionId})`;
+
+            connection.invoke("CustomerServiceJoin").catch(function (err) {
+                return console.error(err.toString());
+            });
+            connection.invoke("GetCustomers").catch(function (err) {
+                return console.error(err.toString());
+            });
+            connection.on("GetCustomersReceive", function (result) {
+                console.log(result);
+
+                const selectElement = document.getElementById("users");
+                selectElement.length = 0;
+                {
+                    const newOption = document.createElement("option");
+                    newOption.value = "";
+                    newOption.text = "ALL";
+                    selectElement.appendChild(newOption);
+                }
+                result.forEach(function (value) {
+                    const newOption = document.createElement("option");
+                    newOption.value = value;
+                    newOption.text = value;
+                    selectElement.appendChild(newOption);
+                });
+            });
+            connection.on("CustomerServiceReceive", function (message) {
+                let messageElement = document.createElement("li");
+                messageElement.textContent = message;
+                document.getElementById("messages").appendChild(messageElement);
+            });
+        })
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+
+    function send() {
+        let user = document.getElementById("users").value;
+        console.log(user);
+        let message = document.getElementById("message").value;
+        if (user) {
+            connection.invoke("SendToCustomer", user, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+        } else {
+            connection.invoke("SendToAllCustomer", message).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+
+    }
+</script>
+
+<h4 id="user">@Model.Name</h4>
+
+<ul id="messages"></ul>
+
+<input type="text" id="message" />
+
+<select id="users">
+    <option value="">ALL</option>
+</select>
+
+<button onclick="send()">Send</button>
