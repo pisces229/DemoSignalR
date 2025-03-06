@@ -1,0 +1,62 @@
+﻿@page 
+@model RazorPage.Authorize.IndexModel
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/AuthorizeHub", {
+            // accessTokenFactory: () => localStorage.getItem("accessToken")
+            accessTokenFactory: () => "@Model.AccessToken"
+        })
+        .build();
+
+    connection.start()
+        .then(function () {
+            {
+                let messageElement = document.createElement("li");
+                messageElement.textContent = "Connection Success";
+                document.getElementById("messages").appendChild(messageElement);
+            }
+            connection.on("Receive", function (message) {
+                console.log(message);
+                let messageElement = document.createElement("li");
+                messageElement.textContent = message;
+                document.getElementById("messages").appendChild(messageElement);
+            });
+        })
+        .catch(function (err) {
+            {
+                let messageElement = document.createElement("li");
+                messageElement.textContent = "Connection Fail";
+                document.getElementById("messages").appendChild(messageElement);
+            }
+            return console.error(err.toString());
+        });
+
+    function send1() {
+        connection.invoke("Send1", "Send1").catch(function (err) {
+            {
+                let messageElement = document.createElement("li");
+                messageElement.textContent = "Send Fail";
+                document.getElementById("messages").appendChild(messageElement);
+            }
+            return console.error(err.toString());
+        });
+    }
+
+    function send2() {
+        connection.invoke("Send2", "Send2").catch(function (err) {
+            {
+                let messageElement = document.createElement("li");
+                messageElement.textContent = "Send Fail";
+                document.getElementById("messages").appendChild(messageElement);
+            }
+            return console.error(err.toString());
+        });
+    }
+</script>
+
+<h1>Authorize</h1>
+
+<ul id="messages"></ul>
+
+<button onclick="send1()">Send1</button>
+<button onclick="send2()">Send2</button>
