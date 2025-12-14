@@ -1,0 +1,20 @@
+﻿@page 
+@model RazorPage.Pages.IndexModel
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/BackgroundHub")
+        .build();
+
+    connection.start().then(function () {
+        connection.on("Receive", function (message) {
+            let messageElement = document.createElement("li");
+            messageElement.textContent = message;
+            document.getElementById("messages").appendChild(messageElement);
+        });
+    });
+
+</script>
+
+<h1>Background</h1>
+
+<ul id="messages"></ul>

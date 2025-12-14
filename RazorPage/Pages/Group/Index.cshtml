@@ -1,0 +1,33 @@
+﻿@page
+@model RazorPage.Pages.Group.IndexModel
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/GroupHub")
+        .build();
+
+    connection.start()
+        .then(function () {
+            console.log("Connected to SignalR");
+        })
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+
+    function send() {
+        let message = document.getElementById("message").value;
+        connection.invoke("Send", message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+</script>
+
+<h1>Group</h1>
+
+<div class="container">
+    <a class="navbar-brand" asp-area="" asp-page="/Group/User1">User1</a>
+    <a class="navbar-brand" asp-area="" asp-page="/Group/User2">User2</a>
+</div>
+
+<input type="text" id="message" />
+
+<button onclick="send()">Send</button>

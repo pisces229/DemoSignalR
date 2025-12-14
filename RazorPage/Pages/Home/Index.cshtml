@@ -1,0 +1,71 @@
+﻿@page 
+@model RazorPage.Pages.HomeModel
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/HomeHub")
+        .withAutomaticReconnect()
+        .build();
+
+    function startConnection() {
+        connection.start()
+            .then(function () {
+                console.log("Connected to SignalR");
+                console.log(connection.connectionId);
+                // Join
+                connection.invoke("Join").catch(function (err) {
+                    return console.error(err.toString());
+                });
+                // History
+                connection.on("History", function (messages) {
+                    console.log(messages);
+                    for (let i in messages) {
+                        let messageElement = document.createElement("li");
+                        messageElement.textContent = messages[i];
+                        document.getElementById("messages").appendChild(messageElement);
+                    }
+                });
+                // Receive
+                connection.on("Receive", function (message) {
+                    console.log(message);
+                    let messageElement = document.createElement("li");
+                    messageElement.textContent = message;
+                    document.getElementById("messages").appendChild(messageElement);
+                });
+            }).catch(function (err) {
+                console.error("SignalR connection error:", err);
+                setTimeout(startConnection, 5000);
+            });;
+    }
+
+    connection.onreconnecting(error => {
+        console.log("SignalR onreconnecting...", error);
+    });
+
+    connection.onreconnected(connectionId => {
+        console.log("SignalR onreconnected ID:", connectionId);
+    });
+
+    connection.onclose(async () => {
+        console.warn("SignalR onclose...");
+        await startConnection();
+    });
+
+    startConnection();
+
+    function send() {
+        let message = document.getElementById("message").value;
+        document.getElementById("message").value = '';
+        // Send
+        connection.invoke("Send", message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+</script>
+
+<h1>Index</h1>
+
+<ul id="messages"></ul>
+
+<input type="text" id="message" />
+
+<button onclick="send()">Send</button>

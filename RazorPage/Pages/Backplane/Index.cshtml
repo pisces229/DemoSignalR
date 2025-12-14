@@ -1,0 +1,45 @@
+﻿@page 
+@model RazorPage.Pages.Backplane.IndexModel
+<script>
+    let connection1 = new signalR.HubConnectionBuilder()
+        .withUrl("https://localhost:7185/hubs/indexHub")
+        .build();
+    connection1.start().then(function () {
+        connection1.on("Receive", function (message) {
+            let messageElement = document.createElement("li");
+            messageElement.textContent = message;
+            document.getElementById("messages").appendChild(messageElement);
+        });
+    });
+    function send1() {
+        let message = document.getElementById("message").value;
+        connection1.invoke("Send", message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+    let connection2 = new signalR.HubConnectionBuilder()
+        .withUrl("https://localhost:7250/hubs/indexHub")
+        .build();
+    connection2.start().then(function () {
+        connection2.on("Receive", function (message) {
+            let messageElement = document.createElement("li");
+            messageElement.textContent = message;
+            document.getElementById("messages").appendChild(messageElement);
+        });
+    });
+    function send2() {
+        let message = document.getElementById("message").value;
+        connection2.invoke("Send", message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+</script>
+
+<h1>Backplane</h1>
+
+<ul id="messages"></ul>
+
+<input type="text" id="message" />
+
+<button onclick="send1()">Send1</button>
+<button onclick="send2()">Send2</button>
