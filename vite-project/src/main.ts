@@ -2,6 +2,8 @@ import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import signalr from './signalrAdapter'
+// import signalr from './signalrAdapter.auto'
+// import signalr from './signalrAdapter.manual'
 import apiService from './apiService'
 import type { SignalrClientReceiveAdapter } from './signalrClientReceiveAdapter'
 import type { ConnectionChangedHandler, SignalrReconnectionHandler } from './signalrReconnectionHandler'
@@ -33,9 +35,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button id="sendDto" type="button">Send Dto</button>
       <button id="receiveDto" type="button">Add Receive Dto Handler</button>
       <button id="removeReceiveDto" type="button">Remove Receive Dto Handler</button>
-    </div>
-    <div class="card">
-      <button id="authorize" type="button">Authorize</button>
     </div>
   </div>
 `
@@ -205,15 +204,6 @@ document.querySelector<HTMLButtonElement>('#receiveDto')!.addEventListener('clic
     })
   } catch (error) {
     console.error('signalr receive dto failed', error)
-  }
-})
-
-document.querySelector<HTMLButtonElement>('#authorize')!.addEventListener('click', async () => {
-  try {
-    await signalr.indexSignalrClientSendAdapter.authorize()
-    console.log('signalr authorize success')
-  } catch (error) {
-    console.error('signalr authorize failed', error)
   }
 })
 

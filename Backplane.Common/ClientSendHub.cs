@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Backplane.Common;
 
+[Authorize]
+//[Authorize(Roles = "Admin")]
+//[Authorize(Roles = "User")]
 public partial class ClientSendHub(
     ILogger<ClientSendHub> _logger,
     IConfiguration _configuration)

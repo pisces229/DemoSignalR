@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.Connections;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Logging;
 
 namespace BackendClient;
@@ -21,7 +20,7 @@ public class BackplaneHub
                     };
                 })
                 // Handles short network fluctuations (0s, 2s, 10s, 30s)
-                .WithAutomaticReconnect()
+                //.WithAutomaticReconnect()
                 //.WithAutomaticReconnect(
                 //[
                 //    TimeSpan.FromSeconds(0),
@@ -31,6 +30,7 @@ public class BackplaneHub
                 //    TimeSpan.FromMinutes(1),
                 //    TimeSpan.FromMinutes(5),
                 //])
+                .WithAutomaticReconnect(new RetryPolicy())
                 .ConfigureLogging(logging =>
                 {
                     logging.SetMinimumLevel(LogLevel.Information);

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Backplane.Common;
 
@@ -42,23 +41,4 @@ public partial class ClientSendHub
         }
     }
 
-    [Authorize]
-    public async Task Authorize()
-    {
-        try
-        {
-            await Task.Delay(1);
-
-            _logger.LogInformation("ConnectionId:{ConnectionId}", Context.ConnectionId);
-            _logger.LogInformation("GetUserId:{GetUserId}", Context.GetUserId());
-            _logger.LogInformation("GetUserName:{GetUserName}", Context.GetUserName());
-            _logger.LogInformation("GetRole:{GetRole}", Context.GetRole());
-
-            await Task.Delay(1);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "ClientSenderHub Authorize Fail.");
-        }
-    }
 }

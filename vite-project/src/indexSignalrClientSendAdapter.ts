@@ -18,8 +18,4 @@ export class IndexSignalrClientSendAdapter {
     sendDto(dto: { title: string, content: string }): Promise<{ title: string, content: string }> {
         return this.connection.invoke('SendDto', dto)
     }
-
-    authorize(): Promise<void> {
-        return this.connection.invoke('Authorize')
-    }
 }
