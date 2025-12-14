@@ -27,6 +27,21 @@ public partial class ClientSendHub
             throw;
         }
     }
+
+    public async Task<Dto> SendDto(Dto dto)
+    {
+        try
+        {
+            await Clients.All.ReceiveDto(dto);
+            return dto;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "ClientSenderHub SendDto Fail.");
+            throw;
+        }
+    }
+
     [Authorize]
     public async Task Authorize()
     {
