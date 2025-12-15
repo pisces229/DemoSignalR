@@ -1,5 +1,6 @@
 using Backplane.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using System.Security.Claims;
@@ -102,6 +103,8 @@ if (!string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("Redis"
             options.Configuration.ChannelPrefix = RedisChannel.Literal("Hub");
         });
 }
+
+builder.Services.AddSingleton<IUserIdProvider, SignalrCustomProvider>();
 
 builder.Services.AddSingleton<IHubService, HubService>();
 

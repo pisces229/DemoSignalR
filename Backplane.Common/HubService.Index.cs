@@ -16,7 +16,14 @@ public partial class HubService
             //await _hubContext.Clients.Group("Groups").Receive(message);
             //await _hubContext.Clients.Groups(["Groups1", "Groups2"]).Receive(message);
 
-            await _hubContext.Clients.All.Receive($"([{_configuration["Name"]!}] HubService Send Message: {message}.)");
+            // UserId reference SignalrCustomProvider define
+            //await _hubContext.Clients.User("Admin")
+            //    .Receive($"([{_configuration["Name"]!}] HubService Send Message: {message}.)");
+            //await _hubContext.Clients.User(Guid.Empty.ToString())
+            //    .Receive($"([{_configuration["Name"]!}] HubService Send Message: {message}.)");
+
+            await _hubContext.Clients.All
+                .Receive($"([{_configuration["Name"]!}] HubService Send Message: {message}.)");
         }
         catch (Exception ex)
         {

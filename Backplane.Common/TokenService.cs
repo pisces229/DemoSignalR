@@ -31,7 +31,7 @@ namespace Backplane.Common
             Claims = new Dictionary<string, object>
             {
                 { ClaimTypes.Name, name },
-                { ClaimTypes.NameIdentifier, Guid.NewGuid() },
+                { ClaimTypes.NameIdentifier, Guid.Empty.ToString() },
                 { ClaimTypes.Role, name }
             },
             Expires = DateTime.UtcNow.Add(timeSpan),
