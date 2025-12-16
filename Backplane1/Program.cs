@@ -88,7 +88,11 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddSignalR(options =>
 {
     options.EnableDetailedErrors = true;
-    //options.KeepAliveInterval = TimeSpan.FromSeconds(10);
+    // Server timeout must be larger than the client timeout
+    options.KeepAliveInterval = TimeSpan.FromSeconds(5);
+    // Client timeout must be smaller than the server timeout
+    options.ClientTimeoutInterval = TimeSpan.FromSeconds(60);
+    // Disable this to ensure all parameters are explicitly defined
     options.DisableImplicitFromServicesParameters = true;
 })
 .AddJsonProtocol(options =>

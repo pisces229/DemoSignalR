@@ -106,7 +106,14 @@ class SignalrAdapter {
                             return localStorage.getItem('token') || ''
                         },
                     })
-                    .configureLogging(signalR.LogLevel.Warning)
+                    .withAutomaticReconnect( 
+                        {
+                            nextRetryDelayInMilliseconds: () => this.getRandomNumberInclusive(0.1, 2)
+                        }
+                    )
+                    .withKeepAliveInterval(15000)
+                    .withServerTimeout(30000)
+                    .configureLogging(signalR.LogLevel.Trace)
                     .build()
 
                 await this.connection.start()
